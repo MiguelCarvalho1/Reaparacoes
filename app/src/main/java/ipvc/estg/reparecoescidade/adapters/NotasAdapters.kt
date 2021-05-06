@@ -42,7 +42,7 @@ class NotasAdapters ( val notas: List<Notas>, val recyclerClik:RecyclerClick) : 
         fun onItemClick(position: Int)
     }
 
-    fun getNoteAt{
+    fun getNoteAt(position: Int): Notas{
         return notas.get(position)
     }
 }

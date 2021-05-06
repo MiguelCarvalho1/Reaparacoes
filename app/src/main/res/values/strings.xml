@@ -3,4 +3,8 @@
     <string name="notes">Notes</string>
     <string name="repairs">Repairs</string>
     <string name="login">Login</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="savenote">Save Note</string>
+    <string name="deleteNote">Delete Note</string>
 </resources>

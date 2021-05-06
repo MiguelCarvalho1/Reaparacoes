@@ -4,4 +4,8 @@
     <string name="notes">Notas</string>
     <string name="repairs">Reparações</string>
     <string name="login">Conectar</string>
+    <string name="title">Titulo</string>
+    <string name="description">Descrição</string>
+    <string name="savenote">Salvar Nota</string>
+    <string name="deleteNote">Nota Eliminada</string>
 </resources>
