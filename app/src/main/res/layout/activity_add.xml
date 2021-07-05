@@ -34,7 +34,7 @@
                 android:textSize="18sp"
                 android:textStyle="italic"/>
             <Button
-                android:id="@+id/btnadd"
+                android:id="@+id/btnAdd"
                 android:background="@color/primaryDarkColor"
                 android:layout_marginTop="32dp"
                 android:layout_width="wrap_content"

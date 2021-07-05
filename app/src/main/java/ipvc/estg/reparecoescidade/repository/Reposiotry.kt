@@ -5,12 +5,15 @@ import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import ipvc.estg.reparecoescidade.dao.NotasDAO
 import ipvc.estg.reparecoescidade.database.NotasDatabase
+import ipvc.estg.reparecoescidade.entities.Notas
+
 
 class Reposiotry(app: Application){
+
     var noteDao: NotasDAO? = NotasDatabase.getDatabase(app)?.noteDao()
 
     fun insert (note: Notas){
-        InsertAsync(notasDao).execute(note)
+        InsertAsync(noteDao).execute(note)
     }
 
 
@@ -22,26 +25,26 @@ class Reposiotry(app: Application){
      }
 
 
-    fun getAllNotes(): LiveData<List<Notas>>{
-        return GetAllNotesAysnc(noteDao).execute().get()
-    }
-    class InsertAsync(notasDao: NotasDAO?) : AsyncTask<Notas, Void, Unit(){
-      var noteDao = noteDao
+  fun getAllNotes(): LiveData<List<Notas>>{
+      return GetAllNotesAysnc(noteDao).execute().get()
+  }
+    class InsertAsync(noteDao: NotasDAO??): AsyncTask<Notas, Void, Unit>() {
+        var noteDao = noteDao
         override fun doInBackground(vararg p0: Notas) {
-          noteDao?.insert(p0[0])
+            noteDao?.insert(p0[0])
         }
 
     }
 
 
-    class DeleteAsync(noteDao: NotasDAO?): AsyncTask<Notas, Void, Unit() {
+    class DeleteAsync(noteDao: NotasDAO?): AsyncTask<Notas, Void, Unit>() {
         var noteDao = noteDao
         override fun doInBackground(vararg p0: Notas) {
             noteDao?.delete(p0[0])
         }
 
     }
-    class UpdateAsync(noteDao: NotasDAO?): AsyncTask<Notas, Void, Unit() {
+    class UpdateAsync(noteDao: NotasDAO?): AsyncTask<Notas, Void, Unit>() {
         var noteDao = noteDao
         override fun doInBackground(vararg p0: Notas) {
             noteDao?.update(p0[0])
@@ -49,16 +52,20 @@ class Reposiotry(app: Application){
 
     }
 
-    class GetAllNotesAysnc(noteDao: NotasDAO?): AsyncTask<Notas, Void, Unit() {
-        var noteDao = noteDao
-        override fun doInBackground(vararg p0:Unit?) {
-            return noteDao?.getAllNotes()
-        }
+class GetAllNotesAysnc(noteDao: NotasDAO?):AsyncTask<Unit, Void, LiveData<List<Notas>>>() {
+    var noteDao= noteDao
+    override fun doInBackground(vararg p0: Unit?): LiveData<List<Notas>>?{
+        return noteDao?.getAllNotes()!!
+    }
+
+}
+
+
 
     }
     
 
-}
+
 
 
 

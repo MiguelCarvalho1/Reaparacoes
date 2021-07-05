@@ -9,16 +9,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ipvc.estg.cmtp1.Adapters.NotasAdapter
-import ipvc.estg.cmtp1.entities.Notas
-import ipvc.estg.cmtp1.viewModel.ViewModel
 import ipvc.estg.reparecoescidade.adapters.NotasAdapters
+import ipvc.estg.reparecoescidade.entities.Notas
+import ipvc.estg.reparecoescidade.ViewModel.ViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.notas.*
+import java.util.OptionalInt.of
+
 
 class MainActivity : AppCompatActivity(), NotasAdapters.RecyclerClick {
     override fun onItemClick(position: Int) {
@@ -87,8 +88,8 @@ class MainActivity : AppCompatActivity(), NotasAdapters.RecyclerClick {
             //update RecyclerView
             allNotes = getAllNotes.value!!
             recyclerView.layoutManager = LinearLayoutManager(this)
-            recyclerView.adapter = NotasAdapter(allNotes, this)
-            noteAdapter = NotasAdapter(allNotes, this)
+            recyclerView.adapter = NotasAdapters(allNotes, this)
+            noteAdapter = NotasAdapters(allNotes, this)
             val swipe = ItemTouchHelper(helper)
             swipe.attachToRecyclerView(recyclerView)
         })
@@ -148,5 +149,7 @@ class MainActivity : AppCompatActivity(), NotasAdapters.RecyclerClick {
         }
     }
 }
+
+
 
 

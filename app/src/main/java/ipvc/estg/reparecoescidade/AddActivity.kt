@@ -15,10 +15,12 @@ class AddActivity : AppCompatActivity(){
             val  title = addTitle.text.toString()
             val description = addDescription.text.toString()
             val addIntent = Intent()
-            addIntent.putExtra("Titlo",title)
+            addIntent.putExtra("Titulo",title)
             addIntent.putExtra("Descrição",description)
             setResult(Activity.RESULT_OK,addIntent)
             finish()
+
+
         }
     }
 }

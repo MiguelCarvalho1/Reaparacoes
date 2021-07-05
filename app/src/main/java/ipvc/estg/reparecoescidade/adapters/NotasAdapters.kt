@@ -8,16 +8,19 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import ipvc.estg.reparecoescidade.R
+import ipvc.estg.reparecoescidade.entities.Notas
 
-class NotasAdapters ( val notas: List<Notas>, val recyclerClik:RecyclerClick) : RecyclerView<NotasAdapters.ViewHolder>(){
-    override  fun onCreateViewHolder(parent: ViewGroup, viewType: Int ) : RecyclerView.ViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate((R.layout.notas,parent, false)
+class NotasAdapters ( val notas: List<Notas>, val recyclerClik: RecyclerClick) : RecyclerView.Adapter<NotasAdapters.ViewHolder>(){
+    override  fun onCreateViewHolder(parent: ViewGroup, viewType: Int ) :ViewHolder {
+        var view = LayoutInflater.from(parent.context).inflate((R.layout.notas), parent, false)
         return ViewHolder(view)
     }
 
     override  fun getItemCount(): Int{
         return notas.size
     }
+
+
 
     override fun onBindViewHolder (holder: ViewHolder, position: Int ){
         val note = notas.get(position)
@@ -30,10 +33,10 @@ class NotasAdapters ( val notas: List<Notas>, val recyclerClik:RecyclerClick) : 
         var txtDescription: TextView? = null
 
         init {
-            row.setOnclikListener{
+            row.setOnClickListener(){
                 recyclerClik.onItemClick(adapterPosition)
             }
-            this.txtTitle = row.findViewById(R.id.txTitle)
+            this.txtTitle = row.findViewById(R.id.txtTitle)
             this.txtDescription = row.findViewById(R.id.txtDescription)
         }
     }
