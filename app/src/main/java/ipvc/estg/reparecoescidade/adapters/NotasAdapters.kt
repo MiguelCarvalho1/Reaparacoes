@@ -12,7 +12,7 @@ import ipvc.estg.reparecoescidade.entities.Notas
 
 class NotasAdapters ( val notas: List<Notas>, val recyclerClik: RecyclerClick) : RecyclerView.Adapter<NotasAdapters.ViewHolder>(){
     override  fun onCreateViewHolder(parent: ViewGroup, viewType: Int ) :ViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate((R.layout.notas), parent, false)
+        val view = LayoutInflater.from(parent.context).inflate((R.layout.notas), parent, false)
         return ViewHolder(view)
     }
 
@@ -43,6 +43,7 @@ class NotasAdapters ( val notas: List<Notas>, val recyclerClik: RecyclerClick) :
 
     interface RecyclerClick{
         fun onItemClick(position: Int)
+        fun Notas(id: String): Notas
     }
 
     fun getNoteAt(position: Int): Notas{

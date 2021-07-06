@@ -16,7 +16,7 @@ abstract  class NotasDatabase : RoomDatabase() {
         fun getDatabase(context: Context): NotasDatabase? {
             if (instance == null) {
                 instance = Room.databaseBuilder(context.applicationContext, NotasDatabase::class.java,
-                        "notas_database").build()
+                        "notes_database").build()
             }
             return instance
         }

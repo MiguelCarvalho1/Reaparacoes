@@ -8,7 +8,7 @@ import ipvc.estg.reparecoescidade.database.NotasDatabase
 import ipvc.estg.reparecoescidade.entities.Notas
 
 
-class Reposiotry(app: Application){
+class Repository(app: Application){
 
     var noteDao: NotasDAO? = NotasDatabase.getDatabase(app)?.noteDao()
 
@@ -28,8 +28,7 @@ class Reposiotry(app: Application){
   fun getAllNotes(): LiveData<List<Notas>>{
       return GetAllNotesAysnc(noteDao).execute().get()
   }
-    class InsertAsync(noteDao: NotasDAO??): AsyncTask<Notas, Void, Unit>() {
-        var noteDao = noteDao
+    class InsertAsync(private var noteDao: NotasDAO?): AsyncTask<Notas, Void, Unit>() {
         override fun doInBackground(vararg p0: Notas) {
             noteDao?.insert(p0[0])
         }
